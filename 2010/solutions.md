@@ -52,6 +52,11 @@ See implementation in `three/4/BankAccount.java`.
 ---
 The same as in question 3.1 and 3.2.
 
+4
+===
+
+See code in `four/threading.cs`.
+
 
 5
 ===
