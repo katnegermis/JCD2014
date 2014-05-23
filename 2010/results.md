@@ -41,11 +41,13 @@ Account: 001 .Balance: -0.50. Last op.: view balance
 3
 ---
 
-Null point exception in BankAccount, line 41
+Null pointer exception in BankAccount, line 41
 
 4
 ---
 
 
+
 5
 ---
+The same as in question 3.1 and 3.2.

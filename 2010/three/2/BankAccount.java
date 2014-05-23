@@ -5,14 +5,14 @@ public class BankAccount implements Serializable // Version1
 {
     private static final long serialVersionUID = 1L;
     private String code;
-    private BigDecimal totalwithdrawals;
-    private BigDecimal totaldeposits;
+    private BigDecimal total_withdrawals;
+    private BigDecimal total_deposits;
     private transient String lastOperation;
 
     public BankAccount(String custCode) {
         setCode(custCode);
-        totaldeposits = BigDecimal.ONE;
-        totalwithdrawals = BigDecimal.ZERO;
+        total_deposits = BigDecimal.ONE;
+        total_withdrawals = BigDecimal.ZERO;
         setLastOperation("creation");
     }
 
@@ -24,17 +24,17 @@ public class BankAccount implements Serializable // Version1
     public BigDecimal getBalance() {
         setLastOperation("view balance");
         return new BigDecimal(
-            totaldeposits.subtract(totalwithdrawals)
+            total_deposits.subtract(total_withdrawals)
             .toString());
     }
 
     public void deposit(BigDecimal amount) {
-        totaldeposits = totaldeposits.add(amount);
+        total_deposits = total_deposits.add(amount);
         setLastOperation("deposit");
     }
 
     public void withdraw(BigDecimal amount) {
-        totalwithdrawals = totalwithdrawals.add(amount);
+        total_withdrawals = total_withdrawals.add(amount);
         setLastOperation("withdraw");
     }
 
