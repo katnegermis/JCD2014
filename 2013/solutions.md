@@ -19,3 +19,24 @@ b), e), f), h)
 4
 ---
 b), e), f)
+
+5
+---
+d)
+
+6
+---
+Think it's c), e)
+
+7
+---
+Think it's a), b)
+
+8, 9, 10, 11, 12, 13
+----------------------
+Solved in 2010 exam set.
+
+
+2
+===
+See code in `two/program.java`.
