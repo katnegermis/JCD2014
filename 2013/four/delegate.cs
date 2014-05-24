@@ -88,6 +88,7 @@ namespace myname {
 
         public bool check(T subject, Criterion<T> criterion) {
             this.subject = subject;
+            // Reset satisfies between calls.
             this.satisfies = true;
             criterion.accept(this);
             return this.satisfies;
