@@ -42,15 +42,15 @@ class MainProgram {
     static void CalculateAll() {
         for (int i = 0; i < numSteps; i++) {
             // Free space
-            int val = MainProgram.model.NextValue();
+            int val = model.NextValue();
 
             // Wait for next buffer space to become free.
-            while (!MainProgram.calculateValue[i % bufferSize]);
+            while (!calculateValue[i % bufferSize]);
 
             buffer[i % bufferSize] = val;
 
             // Mark buffer space occupied.
-            MainProgram.calculateValue[i % bufferSize] = false;
+            calculateValue[i % bufferSize] = false;
             // End of free space
         }
     }
@@ -59,14 +59,14 @@ class MainProgram {
         for (int i = 0; i < numSteps; i++) {
             // Free space
             // Wait for next buffer space to be occupied.
-            while (MainProgram.calculateValue[i % bufferSize]);
+            while (calculateValue[i % bufferSize]);
 
-            int val = MainProgram.buffer[i % bufferSize];
+            int val = buffer[i % bufferSize];
 
             // Mark buffer space free.
-            MainProgram.calculateValue[i % bufferSize] = true;
+            calculateValue[i % bufferSize] = true;
 
-            MainProgram.viewer.Display(val);
+            viewer.Display(val);
             // End of free space
         }
     }
@@ -75,10 +75,10 @@ class MainProgram {
         model = new Model();
         viewer = new Viewer();
         // Free space
-        Thread modelThread = new Thread(new ThreadStart(MainProgram.CalculateAll));
+        Thread modelThread = new Thread(new ThreadStart(CalculateAll));
         modelThread.Start();
 
-        Thread viewerThread = new Thread(new ThreadStart(MainProgram.DisplayAll));
+        Thread viewerThread = new Thread(new ThreadStart(DisplayAll));
         viewerThread.Start();
 
         modelThread.Join();
