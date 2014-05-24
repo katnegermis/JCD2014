@@ -100,11 +100,11 @@ namespace myname {
         // solution. This solution, even when not using brackets
         // ideomatically, just fits.
         public void visit(Criterion<T> c) {
-            if (!this.satisfies) // We know nothing is satisfied if previous argument wasn't.
+            if (!this.satisfies) // We know result is false if previous argument wasn't satisfied.
                 return;
             if (c is AndCriterion<T>) {
                 (c as AndCriterion<T>).LeftCriterion.accept(this);
-                if (!this.satisfies) // We know nothing is satisfied if first argument isn't.
+                if (!this.satisfies) // We know result is false if first argument isn't satisfied.
                     return;
                 (c as AndCriterion<T>).RightCriterion.accept(this);
             }
