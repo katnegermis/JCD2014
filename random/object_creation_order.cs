@@ -44,7 +44,9 @@ class Program {
     public static void Main(string[] args) {
         System.Console.WriteLine("Child c1 = new Child();");
         Child c1 = new Child();
-        System.Console.WriteLine("\n\nChild c2 = new Child(5);");
+        System.Console.WriteLine("\n\n");
+        // Notice that static constructors are only run ONCE per class.
+        System.Console.WriteLine("Child c2 = new Child(5)");
         Child c2 = new Child(5);
     }
 }

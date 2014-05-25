@@ -1,4 +1,8 @@
 class Grandparent {
+    static {
+        System.out.println("static block Grandparent()");
+    }
+
     {
         System.out.println("block Grandparent()");
     }
@@ -13,9 +17,14 @@ class Grandparent {
 }
 
 class Parent extends Grandparent {
+    static {
+        System.out.println("static block Parent()");
+    }
+
     {
         System.out.println("block Parent()");
     }
+
     public Parent() {
         System.out.println("Parent()");
     }
@@ -26,6 +35,10 @@ class Parent extends Grandparent {
 }
 
 class Child extends Parent {
+    static {
+        System.out.println("static block Child()");
+    }
+
     {
         System.out.println("block Child()");
     }
