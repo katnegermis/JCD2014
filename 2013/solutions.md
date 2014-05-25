@@ -40,3 +40,11 @@ Solved in 2010 exam set.
 2
 ===
 See code in `two/program.java`.
+
+3
+===
+Sorry, did this one on paper.
+
+4
+===
+See code in `four/delegate.cs`.
