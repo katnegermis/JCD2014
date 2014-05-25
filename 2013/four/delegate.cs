@@ -38,7 +38,8 @@ namespace myname {
     }
 
     interface CriterionVisitor<T> {
-        void visit(Criterion<T> c);
+        void visit(AndCriterion<T> c);
+        void visit(PrimitiveCriterion<T> c);
     }
 
     class PrimitiveCriterion<T> : Criterion<T> {
@@ -94,23 +95,19 @@ namespace myname {
             return this.satisfies;
         }
 
-        // Only creating one visit method here, since LazySelected
-        // and EagerSelected only calls with Criterion<T> types.
-        // This method is very ugly and has been made as short
-        // as I could. The exam paper only has 12 lines for a
-        // solution. This solution, even when not using brackets
-        // ideomatically, just fits.
-        public void visit(Criterion<T> c) {
+        public void visit(AndCriterion<T> c) {
             if (!this.satisfies) // We know result is false if previous argument wasn't satisfied.
                 return;
-            if (c is AndCriterion<T>) {
-                (c as AndCriterion<T>).LeftCriterion.accept(this);
-                if (!this.satisfies) // We know result is false if first argument isn't satisfied.
-                    return;
-                (c as AndCriterion<T>).RightCriterion.accept(this);
-            }
-            else if (c is PrimitiveCriterion<T>)
-                this.satisfies = (c as PrimitiveCriterion<T>).CriterionFunc(this.subject);
+            c.LeftCriterion.accept(this);
+            if (!this.satisfies) // We know result is false if first argument isn't satisfied.
+                return;
+            c.RightCriterion.accept(this);
+        }
+
+        public void visit(PrimitiveCriterion<T> c) {
+            if (!this.satisfies) // We know result is false if previous argument wasn't satisfied.
+                return;
+            this.satisfies = c.CriterionFunc(this.subject);
         }
     }
 
