@@ -1,4 +1,8 @@
 class Grandparent {
+    {
+        System.out.println("block Grandparent()");
+    }
+
     public Grandparent() {
         System.out.println("Grandparent()");
     }
@@ -9,6 +13,9 @@ class Grandparent {
 }
 
 class Parent extends Grandparent {
+    {
+        System.out.println("block Parent()");
+    }
     public Parent() {
         System.out.println("Parent()");
     }
@@ -19,6 +26,10 @@ class Parent extends Grandparent {
 }
 
 class Child extends Parent {
+    {
+        System.out.println("block Child()");
+    }
+
     public Child() {
         System.out.println("Child()");
     }
@@ -33,6 +44,7 @@ class Program {
     public static void main(String[] args) {
         System.out.println("Child c1 = new Child();");
         Child c1 = new Child();
+
         System.out.println("\n\nChild c2 = new Child(5);");
         Child c2 = new Child(5);
     }

@@ -1,4 +1,8 @@
 class Grandparent {
+    static Grandparent() {
+        System.Console.WriteLine("static Grandparent()");
+    }
+
     public Grandparent() {
         System.Console.WriteLine("Grandparent()");
     }
@@ -9,6 +13,10 @@ class Grandparent {
 }
 
 class Parent : Grandparent {
+    static Parent() {
+        System.Console.WriteLine("static Parent()");
+    }
+
     public Parent() {
         System.Console.WriteLine("Parent()");
     }
@@ -19,6 +27,10 @@ class Parent : Grandparent {
 }
 
 class Child : Parent {
+    static Child() {
+        System.Console.WriteLine("static Child()");
+    }
+
     public Child() {
         System.Console.WriteLine("Child()");
     }
